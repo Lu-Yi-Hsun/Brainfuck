@@ -1,8 +1,8 @@
-buffer input input2 string temp0 temp1 temp2 temp3 ans temp4 temp5 print_buffer_1 print_buffer_2 print_buffer_3 input3 
+buffer input input2 string temp0 temp1 temp2 temp3 ans temp4 temp5 print_buffer_1 print_buffer_2 print_buffer_3 input3 exception
 input3>>>>>>>>>>>>>>+
 
 input3[
-    buffer<<<<<<<<<<<<<<,  輸入字元
+    buffer<<<<<<<<<<<<<<,  輸入字元到buffer
     input>[-]清空變數
     input2>[-]清空變數
     string>[-]
@@ -20,7 +20,7 @@ input3[
 
     string[-]清空為零
     string++++++++++     dec:10=ascii換行  
-    string[input3>>>>>>>>>>>-string<<<<<<<<<<<-] input3減去string 減完後當input3為0代表輸入的等於ascii換行
+    string[input3>>>>>>>>>>>-string<<<<<<<<<<<-] input3減去string 減完後當input3為0代表輸入的等於ascii換行就結束
 
      
     input<<[temp0>>>+temp1>+input<<<<-]temp0>>>[input<<<+temp0>>>-]+
@@ -45,33 +45,40 @@ buffer input input2 string temp0 temp1 temp2 temp3 ans temp4 temp5 print_buffer_
         do notthing
     temp2<-
     temp3>[-]]
-    else input2==")" ans減1
+    else input2==")" 確認ans還能不能減少
     temp2<[
-        
-         
-        
         ans>>[temp0<<<<+temp1>+ans>>>-]temp0<<<<[ans>>>>+temp0<<<<-]+
-        if ans!=0 do notthing
+        if ans!=0 減1
         temp1>[
-            do notthing
             ans>>>- 
         temp0<<<<-
         temp1>[-]]
-        else ans==0 ans減1
+        else ans==0 代表不符合 就可以跳開
         temp0<[
-            do notthing
             ans>>>>[-]+
-
-        temp0<<<<-]    
+            input3>>>>>>[-]
+            exception>[-]+
+        temp0<<<<<<<<<<<-]    
 
     temp2>>-]
     input3>>>>>>>>確認是否要跳開當拿到ascii換行input3為零就會跳開
 ]
- 
-跳開迴圈後根據ans為0就是valid 不為0就是invalid
-buffer input input2 string temp0 temp1 temp2 temp3 ans temp4 temp5 print_buffer_1 print_buffer_2 print_buffer_3 input3 
 
-temp4<<<<<[-]
+為了漂亮繼續接收字串
+exception>[
+    exception,輸入字元到exception
+    string<<<<<<<<<<<<[-]清空為零
+    string++++++++++     dec:10=ascii換行  
+
+    string[exception>>>>>>>>>>>>-string<<<<<<<<<<<<-] exception減去string 減完後當exception為0代表輸入的等於ascii換行就結束
+exception>>>>>>>>>>>> 
+]
+
+
+跳開迴圈後根據ans為0就是valid 不為0就是invalid
+buffer input input2 string temp0 temp1 temp2 temp3 ans temp4 temp5 print_buffer_1 print_buffer_2 print_buffer_3 input3 exception
+
+temp4<<<<<<[-]
 temp5>[-]
 ans<<[temp4>+temp5>+ans<<-]temp4>[ans<+temp4>-]+
 if ans!=0 輸出invalid
